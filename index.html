@@ -2,66 +2,76 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta
-        http-equiv="X-UA-Compatible"
-        content="IE=edge"
-    >
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-    <title>Document</title>
-    <style>
+  <meta charset="UTF-8">
+  <meta
+    http-equiv="X-UA-Compatible"
+    content="IE=edge"
+  >
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <title>Document</title>
+  <style>
 
-    </style>
-    <link
-        rel="stylesheet"
-        href="styles.css"
-    >
+  </style>
+  <link
+    rel="stylesheet"
+    href="styles.css"
+  >
 </head>
 
 <body>
 
-    <canvas id="canva"></canvas>
-
-    <script>
-
-        const convertDegreesToRadians = (degrees) => degrees * (Math.PI / 180);
-
-        const canva = document.querySelector('#canva');
-        canva.height = window.innerHeight - 32;
-        canva.width = window.innerWidth - 32;
-        const ctx = canva.getContext('2d');
-        ctx.imageSmoothingEnabled = false;
-
-        const x = 200;
-        const y = 150;
-        const radius = 70;
-        const startAngle = -82;
-        const endAngle = 220;
-        const isAntiClockwise = false;
-
-        ctx.beginPath();
-        ctx.arc(x, y, radius, convertDegreesToRadians(startAngle), convertDegreesToRadians(endAngle), isAntiClockwise);
-        ctx.lineWidth = 8;
-        ctx.strokeStyle = 'blue';
-        ctx.lineCap = "round";
-        ctx.stroke();
-
-        const strokeDifference = endAngle - startAngle;
-        const fillValue = (strokeDifference / 500) * 400;
+  <div class="wrapper">
+    <canvas
+      id="canva"
+      style="width: 200px; height: 200px;"
+    ></canvas>
+  </div>
 
 
-        ctx.beginPath();
-        ctx.arc(x, y, radius, convertDegreesToRadians(startAngle), convertDegreesToRadians(startAngle + fillValue), isAntiClockwise);
-        ctx.lineWidth = 8;
-        ctx.strokeStyle = 'white';
-        ctx.lineCap = "round";
-        ctx.stroke();
+  <script>
+    const canvaSize = 400;
+    const convertDegreesToRadians = (degrees) => degrees * (Math.PI / 180);
+    const canva = document.querySelector('#canva');
+    canva.height = canvaSize;
+    canva.width = canvaSize;
+    const ctx = canva.getContext('2d');
+    ctx.clearRect(0, 0, canvaSize, canvaSize);
+    ctx.imageSmoothingEnabled = true;
 
-        console.log(canva);
-    </script>
+    const x = canvaSize / 2;
+    const y = canvaSize / 2;
+    const radius = (canvaSize / 2) - 20;
+    const startAngle = -82;
+    const endAngle = 220;
+    const isAntiClockwise = false;
+
+    ctx.beginPath();
+    ctx.arc(x, y, radius, convertDegreesToRadians(startAngle), convertDegreesToRadians(endAngle), isAntiClockwise);
+    ctx.lineWidth = 8;
+    ctx.strokeStyle = 'blue';
+    ctx.lineCap = "round";
+    ctx.stroke();
+
+
+    const strokeDifference = endAngle - startAngle;
+    const fillValue = (strokeDifference / 500) * 400;
+
+
+    ctx.beginPath();
+    ctx.arc(x, y, radius, convertDegreesToRadians(startAngle), convertDegreesToRadians(startAngle + fillValue),
+      isAntiClockwise);
+    ctx.lineWidth = 8;
+    ctx.strokeStyle = 'white';
+    ctx.lineCap = "round";
+    ctx.stroke();
+
+    ctx.scale(2, 2)
+
+    console.log(canva);
+  </script>
 
 </body>
 

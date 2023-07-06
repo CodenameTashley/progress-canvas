@@ -3,6 +3,18 @@
 
 body,
 html {
-  background-color: lightblue;
+  background-color: #2094F1;
   padding: 0;
+}
+
+
+.wrapper {
+  height: 500px;
+  width: 500px;
+  background-color: rgba(0,0,0,0.15);
+  display: grid;
+  place-items: center;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.05);
+  transition: 0.3s;
 }
