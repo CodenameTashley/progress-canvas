@@ -24,54 +24,34 @@
 <body>
 
   <div class="wrapper">
-    <canvas
-      id="canva"
-      style="width: 200px; height: 200px;"
-    ></canvas>
+    <svg
+      class="donut-chart"
+      width="200"
+      height="200"
+    >
+      <path
+        class="donut-chart-circumference"
+        d="M 100 20 A 80 80 0 0 1 180 100 A 80 80 0 0 1 100 180"
+        stroke="white"
+        stroke-width="8"
+        fill="none"
+      ></path>
+      <circle
+        class="donut-chart-cap-start"
+        cx="100"
+        cy="20"
+        r="4"
+        fill="gray"
+      ></circle>
+      <circle
+        class="donut-chart-cap-end"
+        cx="100"
+        cy="180"
+        r="4"
+        fill="gray"
+      ></circle>
+    </svg>
   </div>
-
-
-  <script>
-    const canvaSize = 400;
-    const convertDegreesToRadians = (degrees) => degrees * (Math.PI / 180);
-    const canva = document.querySelector('#canva');
-    canva.height = canvaSize;
-    canva.width = canvaSize;
-    const ctx = canva.getContext('2d');
-    ctx.clearRect(0, 0, canvaSize, canvaSize);
-    ctx.imageSmoothingEnabled = true;
-
-    const x = canvaSize / 2;
-    const y = canvaSize / 2;
-    const radius = (canvaSize / 2) - 20;
-    const startAngle = -82;
-    const endAngle = 220;
-    const isAntiClockwise = false;
-
-    ctx.beginPath();
-    ctx.arc(x, y, radius, convertDegreesToRadians(startAngle), convertDegreesToRadians(endAngle), isAntiClockwise);
-    ctx.lineWidth = 8;
-    ctx.strokeStyle = 'blue';
-    ctx.lineCap = "round";
-    ctx.stroke();
-
-
-    const strokeDifference = endAngle - startAngle;
-    const fillValue = (strokeDifference / 500) * 400;
-
-
-    ctx.beginPath();
-    ctx.arc(x, y, radius, convertDegreesToRadians(startAngle), convertDegreesToRadians(startAngle + fillValue),
-      isAntiClockwise);
-    ctx.lineWidth = 8;
-    ctx.strokeStyle = 'white';
-    ctx.lineCap = "round";
-    ctx.stroke();
-
-    ctx.scale(2, 2)
-
-    console.log(canva);
-  </script>
 
 </body>
 

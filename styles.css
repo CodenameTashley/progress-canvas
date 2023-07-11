@@ -3,18 +3,35 @@
 
 body,
 html {
-  background-color: #2094F1;
+  background-color: #2094f1;
   padding: 0;
 }
 
-
 .wrapper {
-  height: 500px;
-  width: 500px;
-  background-color: rgba(0,0,0,0.15);
-  display: grid;
-  place-items: center;
-  border-radius: 4px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.05);
-  transition: 0.3s;
+  background-color: rgba(0, 0, 0, 0.15);
+  height: 200px;
+  width: 200px;
+}
+
+@keyframes donut-chart-animation {
+  from {
+    stroke-dashoffset: 440; /* Total circumference */
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.donut-chart-circumference {
+  stroke-dasharray: 440; /* Total circumference */
+  stroke-dashoffset: 440; /* Total circumference */
+  animation: donut-chart-animation 1.5s ease-in-out forwards;
+}
+
+.donut-chart-cap-start {
+  opacity: 0;
+}
+
+.donut-chart-cap-end {
+  opacity: 0;
 }
