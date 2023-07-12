@@ -7,6 +7,10 @@ html {
   padding: 0;
 }
 
+.arc {
+  stroke-linecap: round;
+}
+
 .wrapper {
   background-color: rgba(0, 0, 0, 0.15);
   height: 200px;
@@ -22,6 +26,15 @@ html {
   }
 }
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .donut-chart-circumference {
   stroke-dasharray: 440; /* Total circumference */
   stroke-dashoffset: 440; /* Total circumference */
@@ -29,9 +42,10 @@ html {
 }
 
 .donut-chart-cap-start {
-  opacity: 0;
+  opacity: 1;
 }
 
 .donut-chart-cap-end {
   opacity: 0;
+  animation: fadeIn 0.1s 1.125s forwards;
 }
